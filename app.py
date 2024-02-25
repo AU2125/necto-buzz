@@ -15,10 +15,10 @@ from team import Team
 
 app = Flask(__name__)
 
-config = {"DEBUG": True}  # run app in debug mode
+# config = {"DEBUG": True}  # run app in debug mode
 
 # Flask to use the above defined config
-app.config.from_mapping(config)
+# app.config.from_mapping(config)
 app.question_service = MessageService(3)
 app.winner_service = MessageService(30)
 app.teams = {}
@@ -88,7 +88,7 @@ def teams():
 def remove_teams():
     teams = request.args.getlist("teams[]")
     for team in teams:
-        try: 
+        try:
             del app.teams[team]
         except KeyError:
             pass
